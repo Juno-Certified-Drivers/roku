@@ -17,7 +17,7 @@
 //! proxy marks `launch_app.app` as `values_from = "apps"`, and the assistant is shown exactly
 //! the channels this box has. Nobody hard-codes a list of streaming services anywhere.
 
-use juno_driver_sdk::*;
+use driver_sdk::*;
 use serde_json::Value;
 
 #[derive(Default)]
