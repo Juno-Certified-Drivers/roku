@@ -4,6 +4,7 @@ name = "Roku TV"
 manufacturer = "Roku"
 version = "1.0.0"
 runtime = "native"
+primary = true
 
 # Two proxies, because a Roku TV genuinely is two things: a streamer and a display. A room's
 # "watch Netflix" goes to the media_player; its volume goes to the tv.
