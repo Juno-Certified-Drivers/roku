@@ -18,7 +18,7 @@
 //! the channels this box has. Nobody hard-codes a list of streaming services anywhere.
 
 use driver_sdk::*;
-use serde_json::Value;
+use driver_sdk::Value;
 
 #[derive(Default)]
 pub struct Roku;
@@ -327,7 +327,7 @@ impl DriverModule for Roku {
         if body.contains("not allowed in Limited mode") {
             // Launching still works in this mode, so offer the well-known channels rather
             // than nothing. They are unconfirmed: this device may not have them installed.
-            let map: serde_json::Map<String, Value> = WELL_KNOWN
+            let map: driver_sdk::serde_json::Map<String, Value> = WELL_KNOWN
                 .iter()
                 .map(|(id, name)| ((*id).to_string(), json!(name)))
                 .collect();
@@ -363,7 +363,7 @@ impl DriverModule for Roku {
             if apps.is_empty() {
                 return Vec::new();
             }
-            let map: serde_json::Map<String, Value> = apps
+            let map: driver_sdk::serde_json::Map<String, Value> = apps
                 .iter()
                 .map(|(id, name)| (id.clone(), json!(name)))
                 .collect();
@@ -750,7 +750,7 @@ impl Roku {
             "chosen" => {
                 let devices: Vec<Candidate> = input
                     .get("chosen")
-                    .and_then(|c| serde_json::from_value(c.clone()).ok())
+                    .and_then(|c| driver_sdk::serde_json::from_value(c.clone()).ok())
                     .unwrap_or_default();
                 (SetupStep::Done { devices }, Value::Null)
             }
